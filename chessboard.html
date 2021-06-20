@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Draw Chess Board</title>
+    <style >
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            min-height:100vh;
+        }
+        .board
+        {
+            position : absolute;
+            display : grid;
+            grid-template-columns: repeat(8,1fr);
+            top : 47%;
+            left : 50%;
+            transform : translate(-50%,-50%);
+            border: 7px solid black;
+            height:500px;
+             width:500px; 
+             cursor: pointer;
+            }
+            .square{
+                height:61px;
+                width: 61px;
+            }
+            .black{
+                background: black;
+            }
+            .white{
+                background:white;
+            }
+           
+            li{
+                list-style: none; 
+            }
+    </style>
+  </head>
+  <body>
+      <div class="board"></div>
+      <script >
+      const board = document.querySelector(".board");
+      let index =0;
+      let black= false;
+      let num = 1;
+      for(let i=0; i<64;i++){
+          const square = document.createElement("div");
+          if(black){
+                square.classList.add("square");
+                square.classList.add("black");
+                index++;
+                black=!black;
+            }
+          else
+          {
+                square.classList.add("square");
+                square.classList.add("white");
+                index++;
+                black=!black;
+           }
+            board.appendChild(square);
+            if(index===8){
+                black=!black;
+                index=0;
+            }
+        }
+        </script>
+  </body>
+</html>
